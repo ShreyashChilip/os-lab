@@ -1,0 +1,108 @@
+1.	Write shell script to execute command ls, date, pwd repetitively.
+#!/bin/bash
+while true; do
+    ls
+    date
+    pwd
+    sleep 2 # Pause for 2 seconds between iterations
+done
+ 
+ 
+2.	Write a shell script to assign value to the variable? Display value with and without $.
+#!/bin/bash
+var="Hello, Shell!"
+echo "With \$: $var"
+echo "Without \$: var"
+
+ 
+3.	Variables are untyped in Shell Script. Write a shell script to show variables are untyped.
+#!/bin/bash
+var=1234
+echo "Integer value: $var"
+var="Shell scripting"
+echo "String value: $var"
+
+ 
+4.	Write a shell script to accept numbers from user. (Keyboard)
+#!/bin/bash
+echo "Enter a number:"
+read num
+echo "You entered: $num"
+ 
+ 
+5.	Write a shell script to accept numbers from command line arguments.
+#!/bin/bash
+if [ $# -eq 0 ]; then
+    echo "No numbers provided."
+else
+    echo "Numbers provided: $@"
+fi
+
+ 
+6.	Write a shell script to show the contents of environmental variables SHELL, PATH, HOME.
+#!/bin/bash
+echo "SHELL: $SHELL"
+echo "PATH: $PATH"
+echo "HOME: $HOME"
+
+ 
+7.	Write a shell script to create two files. Accept file names from user.
+echo "Enter first file name:"
+read file1
+echo "Enter second file name:"
+read file2
+touch "$file1" "$file2"
+echo "Files $file1 and $file2 created."
+
+ 
+8.	Write a shell script to create two directories. Accept directories name from Command line.
+if [ $# -lt 2 ]; then
+    echo "Please provide two directory names as arguments."
+else
+    mkdir "$1" "$2"
+    echo "Directories $1 and $2 created."
+fi
+
+ 
+9.	Write a shell script to copy file content of one file to another file. Accept files names from command line argument.
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 source_file destination_file"
+else
+    cp "$1" "$2"
+    echo "Contents of $1 copied to $2."
+fi
+
+ 
+10.	Write a shell script to rename the file name. Accept old filename and new filename from command line argument.
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 old_filename new_filename"
+else
+    mv "$1" "$2"
+    echo "$1 renamed to $2."
+fi
+
+ 
+11.	Write a shell script to perform arithmetic operation of integer data.
+echo "Enter two integers:"
+read a
+read b
+echo "Addition: $((a + b))"
+echo "Subtraction: $((a - b))"
+echo "Multiplication: $((a * b))"
+echo "Division: $((a / b))"
+
+ 
+12.Write a shell script to perform arithmetic operation of float data.
+echo "Enter two floating-point numbers:"
+read a
+read b
+add=$(echo "$a + $b" | bc)
+sub=$(echo "$a - $b" | bc)
+mul=$(echo "$a * $b" | bc)
+div=$(echo "scale=2; $a / $b" | bc)
+echo "Addition: $add"
+echo "Subtraction: $sub"
+echo "Multiplication: $mul"
+echo "Division: $div"
+
+ 
