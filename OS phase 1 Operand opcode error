@@ -1,0 +1,99 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+
+//program card is already loaded into memory
+void load();
+void OperandError(char a[]);
+void OpcodeError(char a[]);
+void startUserProgram();
+void load();
+char EM[200][4]={{'G','H','2','0'},{'P','D','o','0'},{'G','D','3','k'},{'P','D','3','0'},{'H'}};
+int IC=0;
+char IR[4],I,R[4];
+
+
+void load(){
+IC=0;
+     startUserProgram();
+}
+void startUserProgram()
+{
+
+while (1)
+{
+    /* code */
+
+strncpy(IR,EM[IC],4);
+IC++;
+ if (strncmp(IR,"GD",2)==0){
+        if(!(isdigit(IR[2]))  || !( isdigit(IR[3])))
+        {
+                 OpcodeError(IR);   
+        }
+        
+}
+else if (strncmp(IR,"PD",2)==0){
+    printf("Enter here");
+    printf(" ");
+        if((!isdigit(IR[2])) || (!isdigit(IR[3])))
+        { printf("Enter here2");
+                 OpcodeError(IR);   
+        }
+        
+}
+else if (strncmp(IR,"LR",2)==0){
+        if(!(isdigit(IR[2]))  || !( isdigit(IR[3])))
+        {
+                 OpcodeError(IR);   
+        }
+        
+}
+else if (strncmp(IR,"SR",2)==0){
+        if(!(isdigit(IR[2])) || !( isdigit(IR[3])))
+        {
+                 OpcodeError(IR);   
+        }
+        
+}
+else if (strncmp(IR,"CR",2)==0){
+        if(!(isdigit(IR[2])) || !( isdigit(IR[3])))
+        {
+                 OpcodeError(IR);   
+        }
+        
+}
+else if (strncmp(IR,"BT",2)==0){
+        if(!(isdigit(IR[2])) || !( isdigit(IR[3])))
+        {
+                 OpcodeError(IR);   
+        }
+        
+}
+else if (strncmp(IR,"H",1)==0){
+      break;
+        
+}
+else{
+    OperandError(IR);
+}
+}
+
+
+}
+void OperandError(char arr[]){
+printf("\nOperand Error here \t");
+printf("%c%c%c%c",arr[0],arr[1],arr[2],arr[3] );
+printf("\n");
+}
+void OpcodeError(char arr[]){
+printf("\nOpcode Error here \t");
+printf("%c%c%c%c",arr[0],arr[1],arr[2],arr[3] );
+printf("\n");
+}
+int main(){
+
+load();  
+
+    return 0;
+}
